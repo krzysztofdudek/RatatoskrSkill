@@ -1,9 +1,9 @@
 ---
-name: liaison
+name: ratatoskr
 description: Use whenever interacting with a user about the codebase or product — covers both change requests (feature, fix, refactor that touches user-visible behavior, account management, data export or deletion, billing, payments, notifications, auth, retention, sharing, or compliance like GDPR / PCI / HIPAA) AND pure questions, explanations, code walkthroughs, and translations between technical and user-visible terms ("how does X work?", "why does the system do Y?", "what happens if Z?"). Use proactively when an operation could be destructive, irreversible, or affect users other than the requester. The plain-language discipline, no-time-estimates rule, and question discipline apply to every user-facing turn regardless. Skip only when a complete written technical specification is attached for verbatim implementation, when performing a pure internal refactor with no user-visible effect, or when continuing a tightly-scoped fix where intent is already locked.
 ---
 
-# Liaison
+# Ratatoskr
 
 ## Overview
 

@@ -1,5 +1,5 @@
 {
-  "name": "liaison",
+  "name": "ratatoskr",
   "version": "0.3.0",
   "description": "A dialogue protocol that makes your coding agent read your request back in plain language, wait for an explicit yes, build only the confirmed scope, and hand you steps to check it — with two gates before anything permanent or compliance-relevant.",
   "author": {
@@ -7,10 +7,10 @@
     "url": "https://github.com/krzysztofdudek"
   },
   "license": "MIT",
-  "homepage": "https://github.com/krzysztofdudek/LiaisonSkill",
-  "repository": "https://github.com/krzysztofdudek/LiaisonSkill.git",
+  "homepage": "https://github.com/krzysztofdudek/RatatoskrSkill",
+  "repository": "https://github.com/krzysztofdudek/RatatoskrSkill.git",
   "keywords": [
-    "liaison",
+    "ratatoskr",
     "claude-code",
     "claude-code-plugin",
     "claude-skill",

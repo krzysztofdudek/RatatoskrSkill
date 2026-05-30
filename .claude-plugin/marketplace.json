@@ -1,11 +1,11 @@
 {
-  "name": "liaison-marketplace",
+  "name": "ratatoskr-marketplace",
   "owner": {
     "name": "Krzysztof Dudek"
   },
   "plugins": [
     {
-      "name": "liaison",
+      "name": "ratatoskr",
       "source": "./",
       "description": "Makes your coding agent read your request back in your own words, wait for an explicit yes, then build the confirmed scope — with two confirmation gates before anything permanent or compliance-relevant, no jargon, no invented timelines, and a check you run yourself."
     }

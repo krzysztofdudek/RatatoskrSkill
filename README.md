@@ -1,17 +1,17 @@
-<img width="1376" height="768" alt="Liaison — your AI coding agent reads your request back in your own words and waits for an explicit yes before anything ships" src="https://github.com/user-attachments/assets/5e4562fa-5b42-4d30-bc96-7d7279fdd96d" />
+<img width="1376" height="768" alt="Ratatoskr — the courier between you and your codebase: it reads your request back in your own words and waits for an explicit yes before anything ships" src="https://github.com/user-attachments/assets/5e4562fa-5b42-4d30-bc96-7d7279fdd96d" />
 
-# Liaison
+# Ratatoskr
 
-**Stop finding out in production what your AI coding agent actually shipped.** Liaison makes the agent read your request back in plain words and wait for your yes before anything user-visible or destructive ships — then it hands you steps to check it yourself.
+**Stop finding out in production what your AI coding agent actually shipped.** Ratatoskr is the **courier between you and your codebase** — it carries your request in, reads it back in plain words, and waits for your yes before anything user-visible or destructive ships. Then it hands you steps to check it yourself.
 
 ```
-/plugin marketplace add krzysztofdudek/LiaisonSkill
-/plugin install liaison@liaison-marketplace
+/plugin marketplace add krzysztofdudek/RatatoskrSkill
+/plugin install ratatoskr@ratatoskr-marketplace
 ```
 
 Run both, then `/reload-plugins` to activate it in this session. No config, no API key. The skill engages on its own when a request arrives in product terms, or when an operation could be destructive or reach users other than you.
 
-> MIT licensed · single markdown file · works with any agent that reads skills · [full skill body](skills/liaison/SKILL.md)
+> MIT licensed · single markdown file · works with any agent that reads skills · part of the [Yggdrasil family](#the-yggdrasil-family) · [full skill body](skills/ratatoskr/SKILL.md)
 
 ---
 
@@ -50,13 +50,13 @@ Now it returns the proposal, and only this shape:
 
 **Note the last line.** It stops and waits. Nothing runs yet. You see the scope, the blast radius, and the 30-day default it picked *before* a line of code is written. Veto, adjust a bullet, or say go.
 
-Notice what's *not* there: no "this'll take a couple hours," no jargon, no "rolled out a JWT refresh flow." Just what changes, who it touches, and how you check it. Those bold labels are the literal section headers from the skill's proposal template — see [`SKILL.md`](skills/liaison/SKILL.md) (Phase B).
+Notice what's *not* there: no "this'll take a couple hours," no jargon, no "rolled out a JWT refresh flow." Just what changes, who it touches, and how you check it. Those bold labels are the literal section headers from the skill's proposal template — see [`SKILL.md`](skills/ratatoskr/SKILL.md) (Phase B).
 
 ---
 
 ## The features are the bans
 
-Most of what makes Liaison useful is what it *refuses* to do:
+Most of what makes Ratatoskr useful is what it *refuses* to do:
 
 | It will not | Because |
 |---|---|
@@ -68,20 +68,6 @@ Most of what makes Liaison useful is what it *refuses* to do:
 | Over-ceremony a trivial ask | Low-stakes, easy-to-undo, affects-only-you requests collapse to a single paragraph. No compliance theater for a button-color change. |
 
 The skill is also required to name any default it picks out loud — *"I'd default to X — flag if not"* — so you can veto a choice (a 30-day window, a 7-day link) you'd otherwise never see. And it **holds the gate under pressure**: "Just do it" / "I'm the CTO" / "meeting in 8 minutes" don't bypass anything. One polite hold, one closed question, then it ships (non-destructive) or holds the line (destructive). No lecturing, no policy citation.
-
----
-
-## Where it fits
-
-There are gaps between what you meant and what runs in production. Different skills own different gaps:
-
-| Gap | What goes wrong | Owner |
-|---|---|---|
-| **You → intent** | You speak in product terms; the agent quietly guesses a spec and builds it | **Liaison** (this skill) |
-| **Intent → code** | The spec is locked, but the agent fills the holes with hacks instead of asking | [Be Precise](https://github.com/krzysztofdudek/BePreciseSkill) |
-| **Code → architecture** | The code works, but it breaks rules your codebase is supposed to hold | [Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil) |
-
-Liaison owns the first gap — the one *before* a spec even exists. It states what it heard, waits for your yes, builds the confirmed scope, then tells you how to check it yourself in the running product. No diff-reading required.
 
 ---
 
@@ -122,8 +108,8 @@ Five phases run when you ask for a change. Each one closes a specific way agents
 Two slash commands. The first registers this repo as a marketplace; the second installs the plugin from it.
 
 ```
-/plugin marketplace add krzysztofdudek/LiaisonSkill
-/plugin install liaison@liaison-marketplace
+/plugin marketplace add krzysztofdudek/RatatoskrSkill
+/plugin install ratatoskr@ratatoskr-marketplace
 ```
 
 Then run `/reload-plugins` to activate it in the current session (or restart Claude Code). No config, no API key.
@@ -131,16 +117,16 @@ Then run `/reload-plugins` to activate it in the current session (or restart Cla
 To upgrade later, refresh the marketplace and reinstall:
 
 ```
-/plugin marketplace update liaison-marketplace
-/plugin install liaison@liaison-marketplace
+/plugin marketplace update ratatoskr-marketplace
+/plugin install ratatoskr@ratatoskr-marketplace
 ```
 
 ### Single-file drop-in (any agent)
 
-The whole skill is one frontmatter-tagged markdown file: [`skills/liaison/SKILL.md`](skills/liaison/SKILL.md). Copy it into your agent's skill directory.
+The whole skill is one frontmatter-tagged markdown file: [`skills/ratatoskr/SKILL.md`](skills/ratatoskr/SKILL.md). Copy it into your agent's skill directory.
 
-- **Claude Code, user-level:** `~/.claude/skills/liaison/SKILL.md`
-- **Claude Code, project-level:** `.claude/skills/liaison/SKILL.md` in your repo
+- **Claude Code, user-level:** `~/.claude/skills/ratatoskr/SKILL.md`
+- **Claude Code, project-level:** `.claude/skills/ratatoskr/SKILL.md` in your repo
 - **Other agents:** wherever your tool reads markdown skills
 
 Nothing else in this repo affects behavior — all of it lives in that one file.
@@ -180,9 +166,9 @@ No — a confabulated number is worse than silence, because it carries the autho
 </details>
 
 <details>
-<summary><b>Does it conflict with be-precise, TDD, or debugging?</b></summary>
+<summary><b>Does it conflict with Urd, TDD, or debugging?</b></summary>
 
-No — they compose. Be-precise handles spec-to-code. Liaison handles user-to-spec — it's upstream. TDD and debugging are about *how* you build or fix. Liaison is about *what* you build and whether you confirmed it.
+No — they compose. Urd handles intent-to-code (asking when the spec runs out). Ratatoskr handles user-to-intent — it's upstream. TDD and debugging are about *how* you build or fix. Ratatoskr is about *what* you build and whether you confirmed it.
 </details>
 
 <details>
@@ -195,18 +181,20 @@ No, and it says so plainly rather than confabulating. If you reference a prior c
 
 ## What it doesn't claim
 
-Liaison is a protocol for *capturing and confirming* intent — not a guarantee the agent read your mind. The read-back exists precisely because it might be wrong, and gives you the chance to catch it. It reduces the risk of irreversible mistakes; it can't eliminate them if the agent fails to recognize a destructive op or can't see the relevant code. It flags compliance surfaces (GDPR, PCI, HIPAA, accessibility) — it does not give legal advice. And it has no memory between chats. It flags; it doesn't promise.
+Ratatoskr is a protocol for *capturing and confirming* intent — not a guarantee the agent read your mind. The read-back exists precisely because it might be wrong, and gives you the chance to catch it. It reduces the risk of irreversible mistakes; it can't eliminate them if the agent fails to recognize a destructive op or can't see the relevant code. It flags compliance surfaces (GDPR, PCI, HIPAA, accessibility) — it does not give legal advice. And it has no memory between chats. It flags; it doesn't promise.
 
 ---
 
-## See also
+## The Yggdrasil family
 
-A small family of single-file skills, each owning one gap in the pipeline from what you said to what shipped — no overlap:
+Four tools, one thesis: **make an AI coding agent prove correctness, stage by stage** — because "done" isn't done. Each is a checkpoint at a different point in the pipeline, where the agent has to show its work before it continues.
 
-- **[Liaison](https://github.com/krzysztofdudek/LiaisonSkill)** (you are here) — the **user → intent** gap. Reads a vague product ask back as a confirmed scope before a spec exists.
-- **[Be Precise](https://github.com/krzysztofdudek/BePreciseSkill)** — the **intent → code** gap. Once intent is locked, stops the agent from silently filling spec holes with guesses.
-- **[Researcher](https://github.com/krzysztofdudek/ResearcherSkill)** — the **code → metric** gap. Given a measurable goal, runs autonomous experiments — hypotheses raised, kept, and discarded.
-- **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** — architecture rules and AST checks the agent can't ignore. A reviewer verifies every change before it moves on.
+| Tool | Stage | What it makes the agent prove |
+|---|---|---|
+| **Ratatoskr** (this one) | request → intent | Reads your request back in plain words and waits for an explicit yes before it acts. |
+| **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks — it doesn't guess. |
+| **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | code → architecture | Every change satisfies the rules that govern it, checked before the agent moves on. |
+| **[Researcher](https://github.com/krzysztofdudek/ResearcherSkill)** | code → measured result | Point it at a metric and it runs experiments — hypotheses kept and discarded. |
 
 ## License
 
