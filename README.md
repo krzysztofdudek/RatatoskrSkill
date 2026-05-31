@@ -2,7 +2,7 @@
 
 # Ratatoskr
 
-**Stop finding out in production what your AI coding agent actually shipped.** Ratatoskr is the **courier between you and your codebase** — it carries your request in, reads it back in plain words, and waits for your yes before anything user-visible or destructive ships. Then it hands you steps to check it yourself.
+**A translator between you and your codebase.** You can prompt an AI coding agent without knowing what a function is. You ask for something in plain words, the agent turns it into code, and you can't read the diff to check it built what you meant. Ratatoskr sits in the middle. It reads your request back in your own words, so you see what the agent understood before it builds. And it explains what the system does back to you the same way. You check the meaning, not the code.
 
 ```
 /plugin marketplace add krzysztofdudek/RatatoskrSkill
@@ -191,7 +191,7 @@ Four tools, one thesis: **make an AI coding agent prove correctness, stage by st
 
 | Tool | Stage | What it makes the agent prove |
 |---|---|---|
-| **Ratatoskr** (this one) | request → intent | Reads your request back in plain words and waits for an explicit yes before it acts. |
+| **Ratatoskr** (this one) | request → intent | Reads your request back in plain words so you see what it understood before it builds. |
 | **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks — it doesn't guess. |
 | **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | code → architecture | Every change satisfies the rules that govern it, checked before the agent moves on. |
 | **[Researcher](https://github.com/krzysztofdudek/ResearcherSkill)** | code → measured result | Point it at a metric and it runs experiments — hypotheses kept and discarded. |
