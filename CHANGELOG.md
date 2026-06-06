@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-06-06
+
 ### Added
 - New cross-cutting rule **"No ceremony, no machinery names"** in `skills/ratatoskr/SKILL.md`. The agent must never surface the internal machinery in a user-facing turn — no skill / plugin / tool / mode / protocol names (its own or any other), no internal phase or step labels ("Phase B", "the second gate", "the five-phase ceremony"), and no ceremonial self-narration ("I'm invoking…", "per my skill…", "entering research mode"). It describes only what is actually happening, in plain words, and does the internal work silently. Includes a wrong/right translation table, an applies-even-when list (technical user, user asks which tool, a convention elsewhere says to announce the skill), and cross-references to the plain-language and stake-recognition rules. Applies to every user-facing turn regardless of audience. Reinforced by an entry in `## When to use`, the frontmatter description, a Red flag bullet, and a Common mistakes row.
 
@@ -38,7 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Claude Code plugin scaffolding: `.claude-plugin/plugin.json` (manifest) and `.claude-plugin/marketplace.json` (single-plugin marketplace listing). Installable via `/plugin marketplace add krzysztofdudek/LiaisonSkill` then `/plugin install liaison@liaison-marketplace`. Single-file drop-in works for any agent that reads markdown skills.
 - MIT license, README, CLAUDE.md with versioning workflow.
 
-[Unreleased]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/krzysztofdudek/LiaisonSkill/releases/tag/v0.1.0
