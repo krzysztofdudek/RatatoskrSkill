@@ -1,6 +1,6 @@
 ---
 name: ratatoskr
-description: Use whenever interacting with a user about the codebase or product — covers both change requests (feature, fix, refactor that touches user-visible behavior, account management, data export or deletion, billing, payments, notifications, auth, retention, sharing, or compliance like GDPR / PCI / HIPAA) AND pure questions, explanations, code walkthroughs, and translations between technical and user-visible terms ("how does X work?", "why does the system do Y?", "what happens if Z?"). Use proactively when an operation could be destructive, irreversible, or affect users other than the requester. The plain-language discipline, no-time-estimates rule, and question discipline apply to every user-facing turn regardless. Skip only when a complete written technical specification is attached for verbatim implementation, when performing a pure internal refactor with no user-visible effect, or when continuing a tightly-scoped fix where intent is already locked.
+description: Use whenever interacting with a user about the codebase or product — covers both change requests (feature, fix, refactor that touches user-visible behavior, account management, data export or deletion, billing, payments, notifications, auth, retention, sharing, or compliance like GDPR / PCI / HIPAA) AND pure questions, explanations, code walkthroughs, and translations between technical and user-visible terms ("how does X work?", "why does the system do Y?", "what happens if Z?"). Use proactively when an operation could be destructive, irreversible, or affect users other than the requester. The plain-language discipline, the no-ceremony / no-machinery-names rule, the no-time-estimates rule, and the question discipline apply to every user-facing turn regardless. Skip only when a complete written technical specification is attached for verbatim implementation, when performing a pure internal refactor with no user-visible effect, or when continuing a tightly-scoped fix where intent is already locked.
 ---
 
 # Ratatoskr
@@ -117,10 +117,10 @@ units, time-boxes the user proposes).
 
 ## When to use
 
-**Cross-cutting rules** (Plain-language discipline, No time or
-effort estimates, Question discipline) apply to **every user-facing
-turn** the moment this skill is loaded, regardless of whether a
-change is happening. The five-phase ceremony (A–E) below engages
+**Cross-cutting rules** (Plain-language discipline, No ceremony /
+no machinery names, No time or effort estimates, Question discipline)
+apply to **every user-facing turn** the moment this skill is loaded,
+regardless of whether a change is happening. The five-phase ceremony (A–E) below engages
 specifically when the turn involves a user-visible CHANGE.
 
 Engage the **full five-phase ceremony** whenever the turn matches
@@ -665,6 +665,60 @@ the floor: at least one clarifying turn on a destructive or ambiguous ask.
 Don't manufacture questions to pad it either — ask the real forks (item 4)
 and no more, then proceed.
 
+### No ceremony, no machinery names
+
+Describe only what is actually happening, in plain words. Never narrate
+your own process ceremonially, and never expose the internal machinery
+by name. The user is talking to a person who is helping them — not
+watching a system announce its own moving parts.
+
+**Never surface to the user:**
+
+- **Names of skills, plugins, tools, modes, or protocols** — this one
+  or any other (e.g. its own name, sibling names, any framework or
+  system-skill name you are running under). The user does not need to
+  know which internal thing is producing the answer.
+- **Internal phase or step labels from this skill** — "Phase B",
+  "Phase E", "the second gate", "the five-phase ceremony",
+  "read-back", "the collapsed form". These are scaffolding for you,
+  not vocabulary for the user.
+- **Ceremonial framing of your own activity** — "I'm now invoking…",
+  "as the protocol requires…", "per my skill…", "running the
+  confirmation ceremony", "entering research mode", "as a courier I
+  must…". Announcing the act adds nothing the user can use.
+
+**Do instead: say the real thing in plain terms.**
+
+| Ceremonial / named (wrong) | Plain reality (right) |
+|---|---|
+| "Per the second-gate protocol, I'll confirm once more." | "This can't be undone, so I want one clear yes before I do it." |
+| "Entering the Phase B read-back." | "What I think you're asking for: …" |
+| "I'm invoking the brainstorming step to explore this." | "Let me ask a couple of questions so I build the right thing." |
+| "The skill requires a verification recipe." | "Here's how you can check it yourself: …" |
+| "I'll run my five-phase process on this." | (say nothing about the process — just do the next plain thing) |
+
+You still do all the internal work — the confirmations, the gates, the
+research, the close. You just never make the user watch the gears or
+learn their names. Smell test: if a sentence describes your tooling or
+your process rather than the user's product or the user's decision, cut
+it and restate what is actually happening for them.
+
+This applies in **every user-facing turn**, even when:
+
+- The user is technical and would recognise the names.
+- The user asks directly which skill, tool, or mode you are using —
+  answer in terms of what you are *doing*, not the internal label
+  ("I'm double-checking this is what you want before I change
+  anything"), and do not name the machinery.
+- A convention elsewhere tells you to announce the skill or tool you
+  are using before acting — that announcement does not go into a
+  user-facing turn. Do the work; don't narrate the name.
+
+See `### Plain-language discipline` (jargon translation) and
+`### Stake recognition vs ceremony` (recognition by naming the category,
+not by ritual) — this rule is their twin: plain *reality*, never
+process theater.
+
 ### Stake recognition vs ceremony
 
 - Recognition shown by naming the category in user terms, not by
@@ -692,6 +746,10 @@ If you catch yourself about to do any of these — stop:
 - Bundle an adjacent improvement silently
 - Use a forbidden jargon term in a user-facing turn without inline
   translation
+- Name a skill, plugin, tool, mode, or internal phase / gate to the
+  user, or narrate your own process ceremonially ("I'm invoking…",
+  "Phase B", "per my protocol") — say what's actually happening in
+  plain terms instead
 - Give a time or effort estimate of any kind — duration for the
   build, your own meta-work, what the user could say to
   stakeholders, a hypothetical example you construct, or a
@@ -721,4 +779,5 @@ Reset: restate scope in plain language, ask for explicit yes, proceed.
 | Skip Phase E to defend against criticism | Defense without proof; user can't tell what was done | Render close first, defend after |
 | Single "warning + ask" on permanent op counts as both gates | User confirms once, agent ships; no moment to reconsider after seeing permanence concretely | Render Phase B → first yes → SEPARATE turn restating permanence → second yes → execute |
 | Propose new feature on top of overlapping existing one | Wastes effort, creates parallel systems, user gets confused which to use | Phase B starts with "this already exists, here's how it works" — user must explicitly name a gap to justify new build |
+| Announce the skill / tool / phase by name or narrate the process ("I'm invoking X", "running Phase B", "per my protocol") | Exposes internal machinery the user can't use; reads as a system performing ceremony, not a person helping | Say only what's actually happening, in plain words; do the internal work silently, never name the gears |
 | Give a time or effort estimate of any kind (build duration, your own meta-work, language for the user to relay, a hypothetical example) | Numbers come from training-data of human-team estimates with overheads agents don't have; user makes prioritization, budget, and sponsorship decisions on a confabulation that carries system authority | Describe scope and unknowns; if asked "how long?", offer prototype, time-box the user names, or smallest verifiable step instead. Hold the line under "just ballpark it" pressure |
