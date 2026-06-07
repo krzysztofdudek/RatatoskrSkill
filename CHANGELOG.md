@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Rewrote the frontmatter `description` of `skills/ratatoskr/SKILL.md` so the skill is **always-on**: it now states it loads on **every user-facing turn without exception**, framed as a standing communication discipline rather than an activity-specific tool. The former trailing "Skip only when…" clause — naming a complete written spec for verbatim implementation, a pure internal refactor, and a tightly-scoped locked fix — acted as a **skip hook**: a skill-selector pattern-matches those words and drops the skill entirely. It is replaced with explicit per-case counters ("load it even when a written spec says implement verbatim, even for a pure internal rename, and even for an already-locked fix — the skill itself decides how light to keep the turn"). Those three cases now set aside only the heavier five-phase ceremony, never the skill. No change to the skill body or mechanics; consistent with the existing `## When NOT to use` section (cross-cutting rules always apply; only the ceremony is skipped).
+- Validated empirically before shipping (researcher workflow in `.lab/`, untracked). Skill-selection subagents over a 13-message battery (10 product turns including the 3 carve-outs + 3 edge turns): the rewrite took the verbatim-spec turn from **0/3 → 3/3** triggering in a clean A/B, with every product turn triggering. Surfaced a methodology gotcha now recorded: Agent-tool subagents **inherit the live session skill registry** (the previously-committed description), so mid-session A/B runs are confounded by the old "Skip only when…" text and must be isolated with a neutral skill name. The clean (isolated) result predicts post-commit behavior, since a new session registers the new text at startup. See `.lab/archives/validate-description-trigger/summary.md`.
+
 ## [0.4.0] - 2026-06-06
 
 ### Added
