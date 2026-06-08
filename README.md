@@ -121,6 +121,39 @@ To upgrade later, refresh the marketplace and reinstall:
 /plugin install ratatoskr@ratatoskr-marketplace
 ```
 
+### GitHub Copilot CLI plugin
+
+The same repo is also a [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli) marketplace. Register it, then install the plugin:
+
+```
+copilot plugin marketplace add krzysztofdudek/RatatoskrSkill
+copilot plugin install ratatoskr@ratatoskr-marketplace
+```
+
+To upgrade later: `copilot plugin update ratatoskr`. The same skill body powers both Claude Code and Copilot — nothing changes in how it behaves.
+
+### Codex CLI plugin
+
+Codex reads the same skill. Register this repo as a marketplace, then install:
+
+```
+codex plugin marketplace add krzysztofdudek/RatatoskrSkill
+codex plugin install ratatoskr@ratatoskr-marketplace
+```
+
+To upgrade later: `codex plugin marketplace upgrade ratatoskr-marketplace`. Or drop the single file into `~/.agents/skills/ratatoskr/SKILL.md` (user-level) or `.agents/skills/ratatoskr/SKILL.md` (project-level).
+
+### Cursor plugin
+
+Cursor auto-discovers the skill from the plugin manifest at the repo root. Install it locally:
+
+```
+git clone https://github.com/krzysztofdudek/RatatoskrSkill.git
+ln -s "$(pwd)/RatatoskrSkill" ~/.cursor/plugins/local/ratatoskr
+```
+
+Then reload Cursor (**Developer: Reload Window**). Or drop the single file into `~/.cursor/skills/ratatoskr/SKILL.md` (user-level) or `.cursor/skills/ratatoskr/SKILL.md` (project-level).
+
 ### Single-file drop-in (any agent)
 
 The whole skill is one frontmatter-tagged markdown file: [`skills/ratatoskr/SKILL.md`](skills/ratatoskr/SKILL.md). Copy it into your agent's skill directory.
