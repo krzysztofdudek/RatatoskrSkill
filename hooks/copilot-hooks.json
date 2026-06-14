@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "bash \"${PLUGIN_ROOT}/hooks/ratatoskr-session-start.sh\" copilot",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

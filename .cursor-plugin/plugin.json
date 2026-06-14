@@ -18,5 +18,6 @@
     "human-in-the-loop",
     "ai-agents"
   ],
-  "logo": "yggdrasil.svg"
+  "logo": "yggdrasil.svg",
+  "hooks": "hooks/cursor-hooks.json"
 }

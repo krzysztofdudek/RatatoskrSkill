@@ -11,7 +11,8 @@
       "version": "0.5.0",
       "skills": [
         "./skills/ratatoskr"
-      ]
+      ],
+      "hooks": "./hooks/copilot-hooks.json"
     }
   ]
 }
