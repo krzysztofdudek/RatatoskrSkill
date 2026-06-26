@@ -1,8 +1,8 @@
 {
   "name": "ratatoskr",
   "displayName": "Ratatoskr",
-  "version": "0.5.0",
-  "description": "A dialogue protocol that makes your coding agent read your request back in plain language, wait for an explicit yes, build only the confirmed scope, and hand you steps to check it — with two gates before anything permanent or compliance-relevant.",
+  "version": "0.6.0",
+  "description": "A communication layer for your AI coding agent: plain language, no jargon, no invented timelines, and one clear yes before anything irreversible — shaping how the agent talks to you, not how it works.",
   "author": {
     "name": "Krzysztof Dudek",
     "url": "https://github.com/krzysztofdudek"
@@ -11,8 +11,8 @@
   "keywords": [
     "ratatoskr",
     "cursor",
-    "intent-capture",
-    "consent-gates",
+    "communication-layer",
+    "never-speak-in-code",
     "plain-language",
     "agentic-guardrails",
     "human-in-the-loop",

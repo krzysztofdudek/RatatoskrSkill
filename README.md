@@ -1,15 +1,15 @@
-<img width="1376" height="768" alt="Ratatoskr — the courier between you and your codebase: it reads your request back in your own words and waits for an explicit yes before anything ships" src="https://github.com/user-attachments/assets/5e4562fa-5b42-4d30-bc96-7d7279fdd96d" />
+<img width="1376" height="768" alt="Ratatoskr — the courier between you and your codebase: it makes the agent talk to you in plain language you can act on, never in code" src="https://github.com/user-attachments/assets/5e4562fa-5b42-4d30-bc96-7d7279fdd96d" />
 
 # Ratatoskr
 
-**A translator between you and your codebase.** You can prompt an AI coding agent without knowing what a function is. You ask for something in plain words, the agent turns it into code, and you can't read the diff to check it built what you meant. Ratatoskr sits in the middle. It reads your request back in your own words, so you see what the agent understood before it builds. And it explains what the system does back to you the same way. You check the meaning, not the code.
+**A translator between you and your codebase.** You can prompt an AI coding agent without knowing what a function is. You ask for something in plain words, the agent turns it into code, and you can't read the diff to check it built what you meant. Ratatoskr sits in the middle — not in *how* the agent works, but in *how it talks to you*. It keeps the conversation in your own words: plain language, never code or jargon, no invented timelines, no process theater, a sharp question when your ask is unclear, and one clear yes before anything that can't be undone. You follow the meaning, not the code.
 
 ```
 /plugin marketplace add krzysztofdudek/RatatoskrSkill
 /plugin install ratatoskr@ratatoskr-marketplace
 ```
 
-Run both, then `/reload-plugins` to activate it in this session. No config, no API key. The skill engages on its own when a request arrives in product terms, or when an operation could be destructive or reach users other than you.
+Run both, then `/reload-plugins` to activate it in this session. No config, no API key. It's a standing discipline: it applies to every user-facing turn about your codebase or product — change requests and plain questions alike — and it only governs what the agent says, never how it sequences the work.
 
 > MIT licensed · single markdown file · works with any agent that reads skills · part of the [Yggdrasil family](#the-yggdrasil-family) · [full skill body](skills/ratatoskr/SKILL.md)
 
@@ -19,7 +19,7 @@ Run both, then `/reload-plugins` to activate it in this session. No config, no A
 
 **You:** *"add 'remember me' to the login page"*
 
-That phrase has two reasonable readings, so the agent — after silently researching the codebase — does not guess. It asks one question first, then proposes.
+That phrase has two reasonable readings, so the agent doesn't guess. It asks one question first.
 
 > **One thing first:** "remember me" can mean two different things. Which do you want?
 >
@@ -30,7 +30,7 @@ That phrase has two reasonable readings, so the agent — after silently researc
 
 **You:** *"yeah, option 1"*
 
-Now it returns the proposal, and only this shape:
+Now it reads the request back in plain words — what changes, who it touches, and how you'll check it — before it gets to work:
 
 > **What I think you're asking for:** A way for people to stay signed in between browser sessions so they don't have to enter their password every time.
 >
@@ -45,59 +45,52 @@ Now it returns the proposal, and only this shape:
 > **Compliance / data notes:** Stores a longer-lived sign-in cookie on the device. People on shared computers should leave the box unchecked — I'd add a short hint near the checkbox.
 >
 > **How to check it afterward:** Sign in with the box checked, close the browser, reopen, visit the site — you should still be signed in. Repeat with the box unchecked — you should be signed out.
->
-> **Before I do anything: confirm above?**
 
-**Note the last line.** It stops and waits. Nothing runs yet. You see the scope, the blast radius, and the 30-day default it picked *before* a line of code is written. Veto, adjust a bullet, or say go.
-
-Notice what's *not* there: no "this'll take a couple hours," no jargon, no "rolled out a JWT refresh flow." Just what changes, who it touches, and how you check it. Those bold labels are the literal section headers from the skill's proposal template — see [`SKILL.md`](skills/ratatoskr/SKILL.md) (Phase B).
+Notice what's *not* there: no "this'll take a couple hours," no jargon, no "rolled out a JWT refresh flow." Just what changes for the people using the product, who it touches, the 30-day default it picked *out loud* so you can veto it, and how you check it yourself. That's the whole job — keep the conversation in terms you can act on. *How* it then builds the change is up to whatever workflow you run.
 
 ---
 
 ## The features are the bans
 
-Most of what makes Ratatoskr useful is what it *refuses* to do:
+Most of what makes Ratatoskr useful is what it *refuses* to say:
 
 | It will not | Because |
 |---|---|
 | Give you a time or effort estimate — ever | Agent "estimates" are pulled from training data of human-team work, with overheads an agent doesn't have. A confabulated "~2 days" carries the authority of "the system said so" and lands in your real budget and roadmap calls. It bans them in every form, even under "just ballpark it." |
-| Ship a destructive op on one yes | Permanent or compliance-relevant operations need **two separate yes turns** — first you confirm the proposal, then in a distinct turn it restates the permanence in concrete terms (file counts, what becomes irrecoverable, and dollar/API cost when it can actually compute it) and asks again. A combined "warning + ask" in one turn does not count. |
-| Use jargon without translating it | An explicit forbidden list — schema, endpoint, JWT, migration, webhook, RBAC, PII, deploy, and dozens more — each banned unless translated to product words (page, button, account, password, notification) on first use, and not used bare again in the same conversation. So a non-engineer can veto without a dictionary. |
-| Bundle scope you didn't confirm | A new idea mid-flight is named as a new ask, not folded in silently. "Quick is a feeling, not a reason." |
-| Build a parallel feature when one already exists | If research finds an existing feature that fits, the proposal *opens* with it — you have to name a concrete gap before it proposes building anything new. |
-| Over-ceremony a trivial ask | Low-stakes, easy-to-undo, affects-only-you requests collapse to a single paragraph. No compliance theater for a button-color change. |
+| Speak in code | An agent never makes you hear engineering — schema, endpoint, JWT, migration, webhook, the users table — even if you used the word first or said you're technical. It says the product behavior instead (page, button, account, "gone for good and can't be brought back") so a non-engineer can follow and veto without a dictionary. |
+| Run something irreversible without a clear heads-up | Before anything permanent — deleting accounts, purging data — it names exactly what is lost in plain, concrete terms ("once this runs, all 240 of those accounts are gone for good and can't be brought back") and gets one clear yes first. |
+| Narrate its own machinery | No "invoking the proposal phase," no naming the skill, tool, or process. It says the real thing in plain words and does the internal work silently. |
+| Hide a default it picked | It names any default out loud — *"I'd default to a 30-day window — flag if not"* — so you can veto a choice you'd otherwise never see. |
+| Over-ceremony a trivial ask | Low-stakes, easy-to-undo, affects-only-you requests stay short. No compliance theater for a button-color change. |
 
-The skill is also required to name any default it picks out loud — *"I'd default to X — flag if not"* — so you can veto a choice (a 30-day window, a 7-day link) you'd otherwise never see. And it **holds the gate under pressure**: "Just do it" / "I'm the CTO" / "meeting in 8 minutes" don't bypass anything. One polite hold, one closed question, then it ships (non-destructive) or holds the line (destructive). No lecturing, no policy citation.
-
----
-
-## When it fires
-
-The skill engages when:
-
-- The request comes in product terms instead of a precise spec — `"add a button so people stay logged in"` fires; `"set the session cookie max-age to 30 days"` does not (that's already a spec).
-- The operation **deletes or removes** something (`rm`, `delete`, `drop`, `truncate`, `purge`).
-- It touches **personal data, payments, retention, audit, or accessibility**.
-- It **affects users other than you** — a group, everyone, external recipients.
-- There's **no written spec** to follow verbatim.
-
-If it's unsure, it fires anyway. The cost of asking once too often is one turn. The cost of asking too few times is what got shipped.
-
-For pure questions and explanations ("how does X work?", "why does the system do Y?"), it skips the full ceremony but still answers in plain language, asks one decision at a time, and never invents a timeline.
+And it **holds the line under pressure**: "Just do it" / "I'm the CTO" / "meeting in 8 minutes" don't buy a guessed number, and they don't skip the one clear yes before something irreversible. One polite hold, no lecturing, no policy citation.
 
 ---
 
-## How it works
+## When it applies
 
-Five phases run when you ask for a change. Each one closes a specific way agents quietly ship the wrong thing:
+Always — on every user-facing turn about your codebase or product, the moment it loads. It's a standing way of talking, not a tool tied to one kind of task:
 
-| Phase | What happens | What it prevents |
-|---|---|---|
-| **A. Silent research** | It works out what the request touches and classifies reversibility, blast radius, compliance, and money first — and doesn't make you read the research | Guessing intent from one line of product-speak |
-| **B. Structured proposal** | Replies starting with the literal words *"What I think you're asking for:"* and the template above | Building before you've read back what it heard |
-| **C. Halt for confirmation** | Stops dead. "Sounds good" on a vague ask isn't consent; it asks one closed question instead | Treating an enthusiastic shrug as a green light |
-| **D. Locked-scope build** | Does exactly what was confirmed. Mid-flight "while you're in there" extras are named as new asks, not bundled | Silent scope creep |
-| **E. Plain-language close** | *Done. What changed / How to check (steps you run in the product) / To undo / Noticed but did NOT change* | "Done!" with no way for you to verify |
+- A change request in product terms — *"add a button so people stay logged in"* — gets read back in plain words.
+- A plain question — *"how does the password reset flow work?"* — gets answered in plain language, one decision at a time, with no invented timeline.
+- A pure internal rename, a spec to implement verbatim, an already-locked fix — it still talks to you in plain language; it just keeps the turn light.
+
+What it does **not** do is tell you how to sequence or run the work. Brainstorm, write a spec, do TDD, run any workflow you like — Ratatoskr only governs how the agent talks to you while you do.
+
+---
+
+## What it does
+
+A handful of rules, all about communication — not methodology:
+
+| Rule | What it means |
+|---|---|
+| **Never speak in code** | Every reference is to what a person using the product sees, does, or experiences — never a code or repository artifact, never jargon. |
+| **No time or effort estimates** | Describes scope and what's unknown; offers the smallest shippable piece or a time-box *you* set — never a confabulated duration. |
+| **No ceremony, no machinery names** | Says what's actually happening in plain words; never narrates its process or names the skill/tool/step. |
+| **Question discipline** | One real decision at a time, grounded in the code, options with their consequences, the recommended default named — never leading. |
+| **One clear yes before anything irreversible** | Names the permanent effect concretely and waits for a single clear yes. |
+| **Plain-language templates (optional)** | When restating a request or reporting a result, it has clean shapes for it — the read-back above, and a *Done / how to check / how to undo* close — used when they help, not as forced gates. |
 
 ---
 
@@ -171,25 +164,25 @@ Nothing else in this repo affects behavior — all of it lives in that one file.
 <details>
 <summary><b>Won't every interaction get long and annoying?</b></summary>
 
-Only when the stakes warrant it. Low-stakes asks — easy to undo, only affects you, no compliance, no money, no hidden branches — collapse to a single paragraph. The full read-back comes out for anything harder. Ceremony is proportional to stakes.
+No. It only governs *how* the agent talks, and it keeps that proportional. Low-stakes asks — easy to undo, only affects you, no compliance, no money — stay to a sentence or two. The fuller read-back comes out only when the impact is wider or harder to undo.
 </details>
 
 <details>
 <summary><b>Does it work for technical users too?</b></summary>
 
-Yes. The plain-language proposal isn't dumbing things down — it keeps the change in product terms so you can veto it without mentally re-deriving the diff, and the check at the end is something you run in the actual product, not a log grep. The full protocol applies regardless of seniority: "I'm the CTO" and "I know what this is" don't skip a gate, which is the point — that's exactly when a missed irreversible op hurts most.
+Yes — and it doesn't switch into code just because you're technical. Keeping a change in product terms lets you judge *what* it does without re-deriving the diff, and the check at the end is something you run in the actual product, not a log grep. "I'm the CTO" and "I know what this is" don't buy a guessed estimate or skip the heads-up before something irreversible — that's exactly when a missed permanent op hurts most.
 </details>
 
 <details>
-<summary><b>Is one "yes" enough for a destructive operation?</b></summary>
+<summary><b>How does it handle deleting things?</b></summary>
 
-No. Permanent or compliance-relevant operations require two separate exchanges. You confirm the proposal. Then, in a *new* turn, the agent restates the permanence in concrete terms — file counts, what becomes irrecoverable, and cost when it can compute it — and you say yes again. The second turn exists so you get a beat to reconsider after seeing it in plain numbers. A combined "warning + ask" in one turn does not count.
+Before anything that can't be undone, it names exactly what's lost in plain, concrete terms — *"once this runs, all 240 of those accounts are gone for good and can't be brought back"* — and waits for one clear yes. It doesn't run on a vague "sure," and it won't dress the warning up in jargon or ceremony.
 </details>
 
 <details>
 <summary><b>What if I pressure the agent to just do it?</b></summary>
 
-On a reversible op, it holds the gate politely and asks once or twice more for the one clear yes; if you keep pushing, it names its default and ships. On something permanent or compliance-relevant, it holds: *"I can't ship this one without the yes — it's permanent."* No lecturing, no policy citation. "The user clearly knows what they want" is the exact rationalization the gate exists to catch.
+On something permanent it still wants the one clear yes: *"Once it's done it's done — I just need one clear yes on this first."* No lecturing, no policy citation. And no amount of pressure buys an invented time estimate. "The user clearly knows what they want" is the exact rationalization the rule exists to catch.
 </details>
 
 <details>
@@ -199,9 +192,9 @@ No — a confabulated number is worse than silence, because it carries the autho
 </details>
 
 <details>
-<summary><b>Does it conflict with Urd, TDD, or debugging?</b></summary>
+<summary><b>Does it conflict with Urd, TDD, brainstorming, or debugging?</b></summary>
 
-No — they compose. Urd handles intent-to-code (asking when the spec runs out). Ratatoskr handles user-to-intent — it's upstream. TDD and debugging are about *how* you build or fix. Ratatoskr is about *what* you build and whether you confirmed it.
+No — it composes with all of them, by design. Ratatoskr is purely a communication layer: it governs *what the agent says to you and how*, never how the work is sequenced or run. Urd handles intent-to-code, TDD and debugging handle *how* you build or fix — Ratatoskr sits across all of them, keeping the conversation in plain language whatever methodology is driving the work.
 </details>
 
 <details>
@@ -214,7 +207,7 @@ No, and it says so plainly rather than confabulating. If you reference a prior c
 
 ## What it doesn't claim
 
-Ratatoskr is a protocol for *capturing and confirming* intent — not a guarantee the agent read your mind. The read-back exists precisely because it might be wrong, and gives you the chance to catch it. It reduces the risk of irreversible mistakes; it can't eliminate them if the agent fails to recognize a destructive op or can't see the relevant code. It flags compliance surfaces (GDPR, PCI, HIPAA, accessibility) — it does not give legal advice. And it has no memory between chats. It flags; it doesn't promise.
+Ratatoskr governs how the agent *talks* to you — it is not a guarantee the agent read your mind, and it does not change what the agent builds or how. The plain-language read-back exists precisely because the agent might have it wrong, and gives you the chance to catch it. It reduces the risk of an irreversible mistake landing silently; it can't eliminate one if the agent fails to recognize a destructive op or can't see the relevant code. It flags compliance surfaces (GDPR, PCI, HIPAA, accessibility) in plain terms — it does not give legal advice. And it has no memory between chats. It flags; it doesn't promise.
 
 ---
 
@@ -224,7 +217,7 @@ Four tools, one thesis: **make an AI coding agent prove correctness, stage by st
 
 | Tool | Stage | What it makes the agent prove |
 |---|---|---|
-| **Ratatoskr** (this one) | request → intent | Reads your request back in plain words so you see what it understood before it builds. |
+| **Ratatoskr** (this one) | request → intent | Talks to you in plain language you can act on — never in code — so you follow what it's doing without reading the diff. |
 | **[Urd](https://github.com/krzysztofdudek/UrdSkill)** | intent → code | When the spec is ambiguous, it consults the source of truth and asks — it doesn't guess. |
 | **[Yggdrasil](https://github.com/krzysztofdudek/Yggdrasil)** | code → architecture | Every change satisfies the rules that govern it, checked before the agent moves on. |
 | **[Researcher](https://github.com/krzysztofdudek/ResearcherSkill)** | code → measured result | Point it at a metric and it runs experiments — hypotheses kept and discarded. |
