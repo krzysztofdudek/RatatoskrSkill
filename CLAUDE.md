@@ -4,7 +4,7 @@
 
 This repository exists solely so the author can develop and version the ratatoskr skill. The canonical file is `skills/ratatoskr/SKILL.md` — people install it as a Claude Code plugin (or copy that one file into their agent's skill dir). Nothing in this repo (CLAUDE.md, CHANGELOG.md, README.md, CI, etc.) may affect the skill's mechanics. All behavior must be self-contained in `skills/ratatoskr/SKILL.md`.
 
-Ratatoskr (formerly "Liaison") is part of the Yggdrasil family of AI-coding-agent correctness tools: it owns the **user → intent** stage — the courier that keeps the agent talking to the user in plain words (never in code), with one clear yes before anything irreversible. It governs how the agent communicates, not how the work is sequenced. Siblings: Urd (intent → code), Yggdrasil (architecture), Researcher.
+Ratatoskr is part of the Yggdrasil family of AI-coding-agent correctness tools: it is the family's **communication layer** — the courier that keeps the agent talking to the user in plain words, never in code. It governs how the agent communicates on every turn, not how the work is sequenced. Siblings: Urd (intent → code), Yggdrasil (architecture), Researcher.
 
 ## Plugin scaffolding
 
