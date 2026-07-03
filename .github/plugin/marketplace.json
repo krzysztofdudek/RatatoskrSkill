@@ -8,7 +8,7 @@
       "name": "ratatoskr",
       "source": "./",
       "description": "Makes your AI coding agent explain your codebase in plain language — no jargon, no invented timelines, one clear yes before anything irreversible. A communication layer, whatever workflow you run.",
-      "version": "0.6.0",
+      "version": "0.7.0",
       "skills": [
         "./skills/ratatoskr"
       ],

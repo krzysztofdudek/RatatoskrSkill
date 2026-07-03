@@ -1,6 +1,6 @@
 {
   "name": "ratatoskr",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A communication layer for your AI coding agent: plain language, no jargon, no invented timelines, and one clear yes before anything irreversible — shaping how the agent talks to you, not how it works.",
   "author": {
     "name": "Krzysztof Dudek",

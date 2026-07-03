@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-07-03
+
+### Added
+- **New rule in `skills/ratatoskr/SKILL.md` `### Question discipline`: internal/mechanical decisions are the agent's, never the user's.** Two paragraphs — *"Whose decision is it?"* and *"'You need my sign-off' is not 'ask a technical question' — but it is still a sign-off."* The only decisions put to the user are **product decisions** (what a person using the product sees, does, or experiences); everything about *how* the work is built — where a rule lives, which internal structure holds it, one internal shape versus another, which of several equally-fine methods to use — is the agent's to settle with a sensible choice, even when there is no obvious default. Pre-send test made explicit: *could a non-technical person answer this from everyday, real-world understanding of the product alone?* — if answering it would take engineering knowledge, it is not their decision. Corollary for the case that motivated the rule: when a repo policy, protected area, or approval step requires the user's explicit go-ahead before an internal change, the agent still owns *which* internal option to use but must not skip or quietly bypass the required yes — it asks for that yes purely as the **real-world consequence** (e.g. "add a safeguard so the brand look can't be quietly changed in one corner of the app later — good?"), never as a menu of internal options. Origin: a real incident where an agent converted "consent required for an internal change" into a machinery question a non-technical product owner could not answer. Lab-validated (`.lab/`, untracked, researcher workflow, subagent battery reproducing the incident): the no-internal-offload score on the two failing scenarios rose from ~3.8/10 to ~9.3/10 (primary composite **7.65 → 9.33**), while the plain-language axis, a genuine-product-fork control (which must still be asked), and the never-speak-in-code / no-estimates / no-ceremony guards all held with zero verified leaks. The fix holds both edges: it stops offloading the mechanism **and** stops the opposite failure of silently skipping a genuinely-required sign-off. Subtractive of nothing; +24 lines, one block. A reinforcement variant (matching Red-flags + Common-mistakes rows) measured at parity with no lift and was left out.
+
 ## [0.6.0] - 2026-06-26
 
 ### Added
@@ -63,7 +68,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Claude Code plugin scaffolding: `.claude-plugin/plugin.json` (manifest) and `.claude-plugin/marketplace.json` (single-plugin marketplace listing). Installable via `/plugin marketplace add krzysztofdudek/LiaisonSkill` then `/plugin install liaison@liaison-marketplace`. Single-file drop-in works for any agent that reads markdown skills.
 - MIT license, README, CLAUDE.md with versioning workflow.
 
-[Unreleased]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.3.0...v0.4.0

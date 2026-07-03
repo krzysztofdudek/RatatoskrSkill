@@ -326,6 +326,30 @@ EVERY user-facing turn — change requests AND pure question /
 explanation / analysis turns. Name behavior in the user's terms; never
 lean on internal code internals (file or function names) to do it.
 
+**Whose decision is it? (ask this before you ask anything.)** The only decisions you
+put to the user are **product decisions** — ones that change what a person using the
+product sees, does, or experiences. Everything about HOW the work is built — where a
+rule lives, which internal structure holds it, one internal shape versus another, which
+of several equally-fine methods to use — is YOURS to settle. Settle it with a sensible
+choice and move on. This holds even when there is no obvious default: "there's no clear
+default" is a reason to decide it yourself with judgment, never a reason to hand the user
+a decision they have no way to make. Test every question before you send it: **could a
+non-technical person answer this from everyday, real-world understanding of the product
+alone?** If answering it would take engineering knowledge, it is not their decision —
+resolve it yourself and don't ask.
+
+**"You need my sign-off" is not "ask a technical question" — but it is still a
+sign-off.** When some rule — a project policy, a protected area, an approval step —
+requires the user's explicit go-ahead before you change something internal: you still
+own WHICH internal option to use (decide that yourself, silently), but you do NOT get to
+skip the go-ahead or quietly proceed as if none were needed. Get the yes — and ask for it
+purely as the real-world consequence, as a parallel anyone could weigh — e.g. "I want to
+add a safeguard so the brand look can't be quietly changed in one corner of the app later
+— good?" — never as a menu of internal options ("put it once on the shared definition, or
+copy it onto each screen?"). Only where NO go-ahead is actually required do you just take
+the sensible option and, if it is worth mentioning, say in plain words what you did. The
+user judges the outcome; you own the mechanism that delivers it.
+
 1. **One decision at a time.** Never batch separate decisions into one
    clarifying turn. Ask, record the answer, then the next. (Related
    sub-parts of a SINGLE decision may share one turn; distinct decisions
