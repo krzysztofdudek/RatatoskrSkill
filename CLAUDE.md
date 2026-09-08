@@ -4,7 +4,7 @@
 
 This repository exists solely so the author can develop and version the ratatoskr skill. The canonical file is `skills/ratatoskr/SKILL.md` — people install it as a Claude Code plugin (or copy that one file into their agent's skill dir). Nothing in this repo (CLAUDE.md, CHANGELOG.md, README.md, CI, etc.) may affect the skill's mechanics. All behavior must be self-contained in `skills/ratatoskr/SKILL.md`.
 
-Ratatoskr is part of the Yggdrasil family of AI-coding-agent correctness tools: it is the family's **communication layer** — the courier that keeps the agent talking to the user in plain words, never in code. It governs how the agent communicates on every turn, not how the work is sequenced. Siblings: Urd (intent → code), Yggdrasil (architecture), Researcher.
+Ratatoskr is an add-on in the Yggdrasil family: it attaches to the agent, not to the graph, and works alone. It is the **communication layer** — the courier that keeps the agent talking to the user in plain words, never in code. It governs how the agent communicates on every turn, not how the work is sequenced. The family's core is Yggdrasil (the architecture graph and the rails), Grain (the first graph, mined from a repository's own code and history) and Horde (the loop past one agent's context), adopted in that order; Ratatoskr, Urd and Researcher are the three add-ons beside them.
 
 ## Plugin scaffolding
 
