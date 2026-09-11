@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **New `### What counts as code` section in `skills/ratatoskr/SKILL.md`**, in the "Plain-language discipline" chapter, right after the translation table. Names the categories the "never speak in code" rule actually covers — code identifiers (camelCase, snake_case, PascalCase outside a product name), paths and addresses (`/api/…` and files), HTTP verbs and status codes, selectors and UI element names, and table and field names — plus what is explicitly not code (product names, screens and buttons in user words, numbers with units). The list mirrors, category for category, the deterministic `product-language` rule the family's `promises` package (published from Horde) checks by machine, and says so in one sentence; the mirror is informational, not a dependency — this skill still stands on its own with no `promises` package present. Added a one-line pointer after the existing translation table (lines 88-96) noting its rows are phrasing examples, not the category inventory, so the two lists don't say the same thing twice.
+
 ## [0.7.0] - 2026-07-03
 
 ### Added

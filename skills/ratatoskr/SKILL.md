@@ -95,6 +95,10 @@ behavior it produces instead.
 | it can't parse that file | (avoid; talk about which parts of the product it covers) |
 | hard-delete / soft-delete / purge / drop the records | "gone for good and can't be brought back" vs "switched off but we can still bring it back" |
 
+These rows are phrasing examples, not the full inventory of what counts
+as code — see "What counts as code" below for the categories they are
+drawn from.
+
 Acceptable words are ones a person sees in the product: page, screen,
 button, link, list, account, password, the login screen, the cancel
 button, the confirmation email, sign in, refund, notification, settings.
@@ -102,6 +106,39 @@ button, the confirmation email, sign in, refund, notification, settings.
 If you genuinely cannot find where something is built, say it in product
 terms — "I can't see where this part of the product is built yet" — and
 ask where it shows up for people, not for the repository or folder.
+
+### What counts as code
+
+The categories below are the same vocabulary the family's `promises`
+package checks by machine, in its *product-language* rule — this section
+names them explicitly, once, rather than leaving them to be inferred
+from the examples above.
+
+**Code, in any of these shapes:**
+
+- **Code identifiers** (`camel-case-identifier`, `snake-case-identifier`,
+  `pascal-case-identifier`) — camelCase, snake_case, or PascalCase,
+  outside a product name.
+- **Paths and addresses** (`file-path`, `url-path`) — `/api/…`-style
+  routes, and files.
+- **HTTP verbs and status codes** (`http-verb`, `http-status-code`) —
+  GET/POST/PUT/DELETE, 404, 500, and the like.
+- **Selectors and UI element names** (`css-selector`) — a CSS selector,
+  or the internal name a script grabs an element by, not the label a
+  person reads.
+- **Table and field names** (`table-name`, `field-name`) — what a
+  database calls something, not what the product calls it.
+
+**Not code:**
+
+- Product names.
+- Screens and buttons, named the way a person using the product would
+  name them.
+- Numbers that carry a unit — a count, a price, a percentage.
+
+This list mirrors the *product-language* rule of the family's `promises`
+package. That is information, not a dependency: this skill stands on
+its own whether or not that package is present in a given repository.
 
 ### Handling code-bait
 
