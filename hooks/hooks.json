@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/ratatoskr-session-start.sh claude"
+            "command": "f=\"${CLAUDE_PLUGIN_ROOT}/hooks/ratatoskr-session-start.sh\"; if [ -f \"$f\" ]; then bash \"$f\" claude; else echo \"ratatoskr: $f is not reachable from this environment (a host path inside a container?), so ratatoskr did not run\" >&2; fi"
           }
         ]
       }
