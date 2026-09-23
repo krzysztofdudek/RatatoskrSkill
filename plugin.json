@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ratatoskr",
+  "version": "0.7.0",
+  "description": "A communication layer for your AI coding agent: plain language, no jargon, no invented timelines, and one clear yes before anything irreversible — shaping how the agent talks to you, not how it works.",
+  "author": {
+    "name": "Krzysztof Dudek",
+    "url": "https://github.com/krzysztofdudek"
+  },
+  "homepage": "https://github.com/krzysztofdudek/RatatoskrSkill",
+  "repository": "https://github.com/krzysztofdudek/RatatoskrSkill.git",
+  "license": "MIT",
+  "keywords": [
+    "ratatoskr",
+    "claude-code",
+    "claude-code-plugin",
+    "claude-skill",
+    "plain-language",
+    "never-speak-in-code",
+    "communication-layer",
+    "non-technical-users",
+    "no-estimates",
+    "agentic-guardrails",
+    "human-in-the-loop",
+    "ai-agents"
+  ],
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/hooks.json",
+      "interface": {
+        "displayName": "ratatoskr"
+      }
+    }
+  }
+}

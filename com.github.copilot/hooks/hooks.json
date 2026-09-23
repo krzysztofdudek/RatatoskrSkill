@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "bash": "f=\"${PLUGIN_ROOT}/hooks/ratatoskr-session-start.sh\"; if [ -f \"$f\" ]; then bash \"$f\" copilot; else echo \"ratatoskr: $f is not reachable from this environment (a host path inside a container?), so ratatoskr did not run\" >&2; fi",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}
