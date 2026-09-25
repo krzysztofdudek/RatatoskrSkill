@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-09-25
+
 ### Fixed
 - The session-start hooks for Claude Code, Copilot and Cursor now check that the script is there before running it. In a VS Code window attached to a dev container the host hands the hook its own install path, which the container cannot see, and the hook failed with an error on every session; it now prints one line saying the path is not reachable and exits cleanly. The Cursor hook names the script through `${CURSOR_PLUGIN_ROOT}` instead of a path relative to a working directory Cursor does not document for plugin hooks.
 
@@ -75,7 +77,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Claude Code plugin scaffolding: `.claude-plugin/plugin.json` (manifest) and `.claude-plugin/marketplace.json` (single-plugin marketplace listing). Installable via `/plugin marketplace add krzysztofdudek/LiaisonSkill` then `/plugin install liaison@liaison-marketplace`. Single-file drop-in works for any agent that reads markdown skills.
 - MIT license, README, CLAUDE.md with versioning workflow.
 
-[Unreleased]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.4.0...v0.5.0
