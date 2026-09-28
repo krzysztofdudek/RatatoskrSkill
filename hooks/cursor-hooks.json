@@ -4,7 +4,7 @@
     "sessionStart": [
       {
         "type": "command",
-        "command": "bash hooks/ratatoskr-session-start.sh cursor"
+        "command": "f=\"${CURSOR_PLUGIN_ROOT}/hooks/ratatoskr-session-start.sh\"; if [ -f \"$f\" ]; then bash \"$f\" cursor; else echo \"ratatoskr: $f is not reachable from this environment (a host path inside a container?), so ratatoskr did not run\" >&2; fi"
       }
     ]
   }

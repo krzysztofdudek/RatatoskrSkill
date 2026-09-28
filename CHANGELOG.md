@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-09-25
+
+### Fixed
+- The session-start hooks for Claude Code, Copilot and Cursor now check that the script is there before running it. In a VS Code window attached to a dev container the host hands the hook its own install path, which the container cannot see, and the hook failed with an error on every session; it now prints one line saying the path is not reachable and exits cleanly. The Cursor hook names the script through `${CURSOR_PLUGIN_ROOT}` instead of a path relative to a working directory Cursor does not document for plugin hooks.
+
 ### Added
+- A portable Agent Plugins 1.0 manifest, `plugin.json` at the repository root, which Copilot and Codex read before any host-specific manifest. Copilot takes its session hook from `com.github.copilot/hooks/hooks.json` under it (checked in a live Copilot CLI session installed from a local marketplace: the hook runs once, in Copilot mode), and Codex its hooks from `extensions.com.openai`. The host manifests stay for Claude Code, Cursor and older Copilot and Codex, with the same name, version and description.
 - **New `### What counts as code` section in `skills/ratatoskr/SKILL.md`**, in the "Plain-language discipline" chapter, right after the translation table. Names the categories the "never speak in code" rule actually covers — code identifiers (camelCase, snake_case, PascalCase outside a product name), paths and addresses (`/api/…` and files), HTTP verbs and status codes, selectors and UI element names, and table and field names — plus what is explicitly not code (product names, screens and buttons in user words, numbers with units). The list mirrors, category for category, the deterministic `product-language` rule the family's `promises` package (published from Horde) checks by machine, and says so in one sentence; the mirror is informational, not a dependency — this skill still stands on its own with no `promises` package present. Added a one-line pointer after the existing translation table (lines 88-96) noting its rows are phrasing examples, not the category inventory, so the two lists don't say the same thing twice.
 
 ## [0.7.0] - 2026-07-03
@@ -71,11 +77,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Claude Code plugin scaffolding: `.claude-plugin/plugin.json` (manifest) and `.claude-plugin/marketplace.json` (single-plugin marketplace listing). Installable via `/plugin marketplace add krzysztofdudek/LiaisonSkill` then `/plugin install liaison@liaison-marketplace`. Single-file drop-in works for any agent that reads markdown skills.
 - MIT license, README, CLAUDE.md with versioning workflow.
 
-[Unreleased]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.7.0...HEAD
-[0.7.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.6.0...v0.7.0
-[0.6.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/krzysztofdudek/LiaisonSkill/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/krzysztofdudek/LiaisonSkill/releases/tag/v0.1.0
+[Unreleased]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/krzysztofdudek/RatatoskrSkill/releases/tag/v0.1.0
