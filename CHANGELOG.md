@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.8.0] - 2026-09-25
+## [0.8.0] - 2026-09-29
 
 ### Fixed
 - The session-start hooks for Claude Code, Copilot and Cursor now check that the script is there before running it. In a VS Code window attached to a dev container the host hands the hook its own install path, which the container cannot see, and the hook failed with an error on every session; it now prints one line saying the path is not reachable and exits cleanly. The Cursor hook names the script through `${CURSOR_PLUGIN_ROOT}` instead of a path relative to a working directory Cursor does not document for plugin hooks.
