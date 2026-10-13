@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.1] - 2026-10-13
+
+### Fixed
+- GitHub Copilot now lists the ratatoskr skill. Its description was written in a form Copilot could not read, so Copilot left the skill out while Claude Code accepted it.
+
 ## [0.8.0] - 2026-09-29
 
 ### Fixed
@@ -77,7 +82,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Claude Code plugin scaffolding: `.claude-plugin/plugin.json` (manifest) and `.claude-plugin/marketplace.json` (single-plugin marketplace listing). Installable via `/plugin marketplace add krzysztofdudek/LiaisonSkill` then `/plugin install liaison@liaison-marketplace`. Single-file drop-in works for any agent that reads markdown skills.
 - MIT license, README, CLAUDE.md with versioning workflow.
 
-[Unreleased]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.8.1...HEAD
+[0.8.1]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/krzysztofdudek/RatatoskrSkill/compare/v0.5.0...v0.6.0
